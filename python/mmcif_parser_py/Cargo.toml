@@ -1,0 +1,18 @@
+[package]
+name = "mmcif-parser-py"
+version = "0.1.0"
+edition = "2021"
+authors = ["chengjilai"]
+description = "Python bindings for the mmcif-parser Rust crates"
+license = "MIT"
+readme = "README.md"
+
+[lib]
+name = "mmcif_parser"
+crate-type = ["cdylib"]
+
+[dependencies]
+pyo3 = { version = "0.21", features = ["extension-module", "abi3-py39"] }
+mmcif-core = { path = "../../crates/mmcif-core" }
+mmcif-analyze = { path = "../../crates/mmcif-analyze" }
+thiserror = "1.0"
