@@ -4,11 +4,11 @@
 use std::path::PathBuf;
 
 use mmcif_analyze::{
-    atom_electronegativity, build_dense_distance_matrix, build_sparse_bond_adjacency,
-    explicit_bond_pairs, infer_hybridization, nearest_amino_acids, nearest_atoms, BondNeighbor,
+    BondNeighbor, atom_electronegativity, build_dense_distance_matrix, build_sparse_bond_adjacency,
+    explicit_bond_pairs, infer_hybridization, nearest_amino_acids, nearest_atoms,
 };
 use mmcif_core::atom::Hybridization;
-use mmcif_core::{parse_file, AtomPosition, BondType, ContactClass, MmcifStructure};
+use mmcif_core::{AtomPosition, BondType, ContactClass, MmcifStructure, parse_file};
 use pyo3::exceptions::{PyIOError, PyValueError};
 use pyo3::prelude::*;
 use pyo3::types::PyAny;
@@ -31,7 +31,7 @@ impl From<BindingError> for PyErr {
     }
 }
 
-#[pyclass(module = "mmcif_parser", name = "Structure")]
+#[pyclass(module = "mmcif-parser", name = "Structure")]
 pub struct PyStructure {
     inner: MmcifStructure,
 }
@@ -195,7 +195,7 @@ impl PyStructure {
     }
 }
 
-#[pyclass(module = "mmcif_parser", name = "AtomHit")]
+#[pyclass(module = "mmcif-parser", name = "AtomHit")]
 #[derive(Clone)]
 pub struct PyAtomHit {
     #[pyo3(get)]
@@ -236,7 +236,7 @@ impl From<mmcif_analyze::AtomHit<'_>> for PyAtomHit {
     }
 }
 
-#[pyclass(module = "mmcif_parser", name = "ResidueHit")]
+#[pyclass(module = "mmcif-parser", name = "ResidueHit")]
 #[derive(Clone)]
 pub struct PyResidueHit {
     #[pyo3(get)]
@@ -260,7 +260,7 @@ impl From<mmcif_analyze::ResidueHit<'_>> for PyResidueHit {
     }
 }
 
-#[pyclass(module = "mmcif_parser", name = "DistanceMatrix")]
+#[pyclass(module = "mmcif-parser", name = "DistanceMatrix")]
 pub struct PyDistanceMatrix {
     #[pyo3(get)]
     pub atom_indices: Vec<usize>,
@@ -268,7 +268,7 @@ pub struct PyDistanceMatrix {
     pub distances: Vec<Vec<f64>>,
 }
 
-#[pyclass(module = "mmcif_parser", name = "Contact")]
+#[pyclass(module = "mmcif-parser", name = "Contact")]
 pub struct PyContact {
     #[pyo3(get)]
     pub first: usize,
@@ -291,7 +291,7 @@ impl From<mmcif_core::InterAtomicContact> for PyContact {
     }
 }
 
-#[pyclass(module = "mmcif_parser", name = "BondNeighbor")]
+#[pyclass(module = "mmcif-parser", name = "BondNeighbor")]
 #[derive(Clone)]
 pub struct PyBondNeighbor {
     #[pyo3(get)]
@@ -309,7 +309,7 @@ impl From<BondNeighbor> for PyBondNeighbor {
     }
 }
 
-#[pyclass(module = "mmcif_parser", name = "AtomProfile")]
+#[pyclass(module = "mmcif-parser", name = "AtomProfile")]
 pub struct PyAtomProfile {
     #[pyo3(get)]
     pub index: usize,
@@ -383,7 +383,7 @@ pub fn parse(path: &Bound<'_, PyAny>) -> PyResult<PyStructure> {
 }
 
 #[pymodule]
-fn mmcif_parser(_py: Python<'_>, m: &Bound<'_, PyModule>) -> PyResult<()> {
+fn mmcif-parser(_py: Python<'_>, m: &Bound<'_, PyModule>) -> PyResult<()> {
     m.add_class::<PyStructure>()?;
     m.add_class::<PyAtomHit>()?;
     m.add_class::<PyResidueHit>()?;

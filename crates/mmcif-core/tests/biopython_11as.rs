@@ -3,8 +3,8 @@ use std::ffi::OsString;
 use std::path::Path;
 use std::process::Command;
 
-use mmcif_core::parser::parse_file;
 use mmcif_core::AtomSite;
+use mmcif_core::parser::parse_file;
 use serde::Deserialize;
 
 #[derive(Debug, Deserialize)]
@@ -30,7 +30,11 @@ fn compare_against_biopython_reference() {
     let stats = run_biopython_summary(crate_dir, &cif_path);
     let structure = parse_file(&cif_path).expect("mmcif-core parses 11AS");
 
-    assert_eq!(structure.atom_count(), stats.atom_count, "atom count diverged");
+    assert_eq!(
+        structure.atom_count(),
+        stats.atom_count,
+        "atom count diverged"
+    );
     assert_eq!(
         structure.metadata.entry_id.as_deref(),
         Some("11AS"),
@@ -41,10 +45,16 @@ fn compare_against_biopython_reference() {
     assert_eq!(our_chain_ids, stats.chain_ids, "chain set mismatch");
 
     let our_residue_count = collect_residue_keys(structure.atoms()).len();
-    assert_eq!(our_residue_count, stats.residue_count, "residue count mismatch");
+    assert_eq!(
+        our_residue_count, stats.residue_count,
+        "residue count mismatch"
+    );
 
     let our_samples = collect_residue_names(structure.atoms());
-    assert_eq!(our_samples, stats.residue_names_sample, "residue sample mismatch");
+    assert_eq!(
+        our_samples, stats.residue_names_sample,
+        "residue sample mismatch"
+    );
 
     let our_first_atom = structure
         .atoms()
@@ -59,7 +69,10 @@ fn compare_against_biopython_reference() {
         .and_then(|atom| atom.label_comp_id.as_deref())
         .map(|s| s.trim().to_ascii_uppercase())
         .expect("first residue");
-    assert_eq!(our_first_residue, stats.first_residue, "first residue mismatch");
+    assert_eq!(
+        our_first_residue, stats.first_residue,
+        "first residue mismatch"
+    );
 
     let cell = structure
         .metadata
@@ -135,8 +148,7 @@ fn collect_residue_names(atoms: &[AtomSite]) -> Vec<String> {
 }
 
 fn atom_name(atom: &AtomSite) -> Option<String> {
-    atom
-        .label_atom_id
+    atom.label_atom_id
         .as_deref()
         .or(atom.auth_atom_id.as_deref())
         .map(|s| s.trim().to_string())

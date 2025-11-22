@@ -1,5 +1,7 @@
 *.cif.gz
 target/
+docs/api/
+!docs/api/.gitkeep
 .venv/
 __pycache__/
 *.pyc

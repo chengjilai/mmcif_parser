@@ -1,4 +1,4 @@
-# mmcif_parser (Python bindings)
+# mmcif-parser (Python bindings)
 
 Python wheels generated from the `mmcif-core` and `mmcif-analyze` Rust crates. The
 extension module exposes a high-level `Structure` type that mirrors the Rust data
@@ -6,7 +6,7 @@ model and offers convenience helpers for spatial queries.
 
 ```python
 from pathlib import Path
-import mmcif_parser as mmcif
+import mmcif-parser as mmcif
 
 structure = mmcif.parse(Path("11AS.cif.gz"))
 print(structure.atom_count)
@@ -27,7 +27,7 @@ for hit in structure.nearest_atoms((12.0, 4.2, 0.3), max_distance=5.0, max_resul
 2. Use the provided automation targets:
 
     ```bash
-    cd python/mmcif_parser_py
+    cd python/mmcif-parser_py
     make develop   # editable install via maturin develop --release
     make build     # produce wheels + sdist via maturin build --release --sdist --strip
     ```

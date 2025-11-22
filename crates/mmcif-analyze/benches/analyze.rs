@@ -1,15 +1,11 @@
 use std::path::Path;
 
-use criterion::{black_box, criterion_group, criterion_main, Criterion};
+use criterion::{Criterion, black_box, criterion_group, criterion_main};
 use mmcif_analyze::{
-    build_adjacency,
-    build_dense_distance_matrix,
-    build_sparse_bond_adjacency,
-    compute_bonds_by_distance,
-    nearest_amino_acids,
-    nearest_atoms,
+    build_adjacency, build_dense_distance_matrix, build_sparse_bond_adjacency,
+    compute_bonds_by_distance, nearest_amino_acids, nearest_atoms,
 };
-use mmcif_core::{parse_file, AtomPosition, AtomSite, MmcifStructure};
+use mmcif_core::{AtomPosition, AtomSite, MmcifStructure, parse_file};
 
 fn load_structure() -> MmcifStructure {
     let manifest = Path::new(env!("CARGO_MANIFEST_DIR"));
@@ -151,8 +147,8 @@ fn derive_residue_key<'a>(atom: &'a AtomSite) -> BenchResidueKey<'a> {
 
 fn bench_is_amino_acid(comp_id: Option<&str>) -> bool {
     const AMINO_ACIDS: [&str; 21] = [
-        "ALA", "ARG", "ASN", "ASP", "CYS", "GLN", "GLU", "GLY", "HIS", "ILE", "LEU",
-        "LYS", "MET", "PHE", "PRO", "SER", "THR", "TRP", "TYR", "VAL", "SEC",
+        "ALA", "ARG", "ASN", "ASP", "CYS", "GLN", "GLU", "GLY", "HIS", "ILE", "LEU", "LYS", "MET",
+        "PHE", "PRO", "SER", "THR", "TRP", "TYR", "VAL", "SEC",
     ];
     let Some(raw) = comp_id else {
         return false;

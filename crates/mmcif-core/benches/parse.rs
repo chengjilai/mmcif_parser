@@ -1,6 +1,6 @@
 use std::path::Path;
 
-use criterion::{black_box, criterion_group, criterion_main, Criterion};
+use criterion::{Criterion, black_box, criterion_group, criterion_main};
 use mmcif_core::parse_file;
 
 fn bench_parse_11as(c: &mut Criterion) {

@@ -1,7 +1,7 @@
 import pathlib
 import unittest
 
-import mmcif_parser
+import mmcif-parser
 
 PROJECT_ROOT = pathlib.Path(__file__).resolve().parents[3]
 CIF_PATH = PROJECT_ROOT / "11AS.cif.gz"
@@ -12,7 +12,7 @@ class StructureUtilityTests(unittest.TestCase):
     def setUpClass(cls) -> None:
         if not CIF_PATH.is_file():
             raise unittest.SkipTest(f"test data missing: {CIF_PATH}")
-        cls.structure = mmcif_parser.parse(CIF_PATH)
+        cls.structure = mmcif-parser.parse(CIF_PATH)
 
     def test_unit_cell_metadata(self) -> None:
         unit_cell = self.structure.unit_cell()

@@ -217,9 +217,7 @@ impl BondType {
             "2" | "DOUB" | "DOUBLE" => Some(BondType::CovalentDouble),
             "3" | "TRIP" | "TRIPLE" => Some(BondType::CovalentTriple),
             "4" | "QUAD" | "QUADRUPLE" => Some(BondType::CovalentUnknown),
-            "AROM" | "AROMATIC" | "DELO" | "DELOCALIZED" => {
-                Some(BondType::CovalentAromatic)
-            }
+            "AROM" | "AROMATIC" | "DELO" | "DELOCALIZED" => Some(BondType::CovalentAromatic),
             "PI" => Some(BondType::CovalentDouble),
             "PARTIAL" => Some(BondType::CovalentUnknown),
             "ION" | "IONIC" => Some(BondType::Ionic),

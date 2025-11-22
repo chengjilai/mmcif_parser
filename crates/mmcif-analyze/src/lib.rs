@@ -162,7 +162,11 @@ pub fn nearest_amino_acids<'a>(
         .collect();
 
     let mut residues: HashMap<ResidueKey<'a>, f64> = HashMap::with_capacity(
-        residue_keys.iter().filter(|entry| entry.is_some()).count().max(8),
+        residue_keys
+            .iter()
+            .filter(|entry| entry.is_some())
+            .count()
+            .max(8),
     );
 
     let mut upsert = |key: ResidueKey<'a>, distance: f64| {
@@ -208,12 +212,21 @@ pub fn nearest_amino_acids<'a>(
 
     let mut hits: Vec<_> = residues
         .into_iter()
-        .map(|(ResidueKey { comp_id, chain_id, seq_id }, distance)| ResidueHit {
-            comp_id,
-            chain_id,
-            seq_id,
-            distance,
-        })
+        .map(
+            |(
+                ResidueKey {
+                    comp_id,
+                    chain_id,
+                    seq_id,
+                },
+                distance,
+            )| ResidueHit {
+                comp_id,
+                chain_id,
+                seq_id,
+                distance,
+            },
+        )
         .collect();
     sort_and_truncate(&mut hits, max_results, |hit| hit.distance);
     hits
@@ -278,7 +291,11 @@ pub fn compute_bonds_by_distance(
 /// structure.
 pub fn resolve_explicit_bonds(structure: &MmcifStructure) -> Vec<ResolvedBond> {
     let mut bonds = Vec::new();
-    for (index, neighbors) in structure.explicit_bond_adjacency_with_types().iter().enumerate() {
+    for (index, neighbors) in structure
+        .explicit_bond_adjacency_with_types()
+        .iter()
+        .enumerate()
+    {
         for neighbor in neighbors {
             if index < neighbor.index {
                 bonds.push(ResolvedBond {
@@ -308,9 +325,7 @@ pub fn build_sparse_bond_adjacency(
     include_geometric: bool,
     tolerance: f64,
 ) -> Vec<Vec<BondNeighbor>> {
-    let mut adjacency = structure
-        .explicit_bond_adjacency_with_types()
-        .to_vec();
+    let mut adjacency = structure.explicit_bond_adjacency_with_types().to_vec();
 
     if include_geometric {
         for (i, j) in compute_bonds_by_distance(structure, tolerance) {
@@ -333,7 +348,10 @@ pub fn build_sparse_bond_adjacency(
 
 /// Return electronegativity for an atom index if known.
 pub fn atom_electronegativity(structure: &MmcifStructure, atom_index: usize) -> Option<f64> {
-    structure.atoms().get(atom_index).and_then(|a| a.electronegativity())
+    structure
+        .atoms()
+        .get(atom_index)
+        .and_then(|a| a.electronegativity())
 }
 
 /// Infer a simple hybridization for `atom_index` using a precomputed adjacency
@@ -471,15 +489,15 @@ fn is_amino_acid(comp_id: Option<&str>) -> bool {
 }
 
 const AMINO_ACIDS: [&str; 21] = [
-    "ALA", "ARG", "ASN", "ASP", "CYS", "GLN", "GLU", "GLY", "HIS", "ILE",
-    "LEU", "LYS", "MET", "PHE", "PRO", "SER", "THR", "TRP", "TYR", "VAL", "SEC",
+    "ALA", "ARG", "ASN", "ASP", "CYS", "GLN", "GLU", "GLY", "HIS", "ILE", "LEU", "LYS", "MET",
+    "PHE", "PRO", "SER", "THR", "TRP", "TYR", "VAL", "SEC",
 ];
 
 #[cfg(test)]
 mod tests {
     use super::*;
     use mmcif_core::{
-        parse_file, BondAtomRef, BondRecord, BondRecordSource, BondType, MmcifMetadata,
+        BondAtomRef, BondRecord, BondRecordSource, BondType, MmcifMetadata, parse_file,
     };
     use std::path::Path;
 
@@ -491,10 +509,14 @@ mod tests {
         let mut atom = AtomSite::new();
         atom.set_value("_atom_site.label_comp_id", comp_id).unwrap();
         atom.set_value("_atom_site.label_asym_id", chain).unwrap();
-        atom.set_value("_atom_site.label_seq_id", &seq.to_string()).unwrap();
-        atom.set_value("_atom_site.Cartn_x", &coords.0.to_string()).unwrap();
-        atom.set_value("_atom_site.Cartn_y", &coords.1.to_string()).unwrap();
-        atom.set_value("_atom_site.Cartn_z", &coords.2.to_string()).unwrap();
+        atom.set_value("_atom_site.label_seq_id", &seq.to_string())
+            .unwrap();
+        atom.set_value("_atom_site.Cartn_x", &coords.0.to_string())
+            .unwrap();
+        atom.set_value("_atom_site.Cartn_y", &coords.1.to_string())
+            .unwrap();
+        atom.set_value("_atom_site.Cartn_z", &coords.2.to_string())
+            .unwrap();
         atom
     }
 
@@ -569,7 +591,11 @@ mod tests {
         let mut h4 = h1.clone();
         h4.set_value("_atom_site.Cartn_z", "-0.63").unwrap();
 
-        let methane = MmcifStructure::new(MmcifMetadata::default(), vec![c, h1, h2, h3, h4], Vec::new());
+        let methane = MmcifStructure::new(
+            MmcifMetadata::default(),
+            vec![c, h1, h2, h3, h4],
+            Vec::new(),
+        );
         let bonds = compute_bonds_by_distance(&methane, 0.45);
         let adj = build_adjacency(methane.atoms().len(), &bonds);
         let hyb = infer_hybridization(&methane, 0, &adj);
@@ -725,16 +751,25 @@ mod tests {
         assert_eq!(adjacency.len(), 3);
         let first_neighbors = &adjacency[0];
         assert_eq!(first_neighbors.len(), 1);
-        assert_eq!(first_neighbors[0], BondNeighbor {
-            index: 1,
-            bond_type: Some(BondType::CovalentDouble),
-        });
+        assert_eq!(
+            first_neighbors[0],
+            BondNeighbor {
+                index: 1,
+                bond_type: Some(BondType::CovalentDouble),
+            }
+        );
 
         let second_neighbors = &adjacency[1];
-        assert!(second_neighbors.iter().any(|n| n.index == 0 && n.bond_type == Some(BondType::CovalentDouble)));
-        assert!(second_neighbors
-            .iter()
-            .any(|n| n.index == 2 && n.bond_type == Some(BondType::CovalentUnknown)));
+        assert!(
+            second_neighbors
+                .iter()
+                .any(|n| n.index == 0 && n.bond_type == Some(BondType::CovalentDouble))
+        );
+        assert!(
+            second_neighbors
+                .iter()
+                .any(|n| n.index == 2 && n.bond_type == Some(BondType::CovalentUnknown))
+        );
     }
 
     #[test]
@@ -788,9 +823,11 @@ mod tests {
         assert_eq!(residue_hits[0].seq_id, Some(seq_id));
 
         let explicit = resolve_explicit_bonds(&structure);
-        assert!(explicit
-            .iter()
-            .any(|bond| matches_pair(bond, n_idx, ca_idx)));
+        assert!(
+            explicit
+                .iter()
+                .any(|bond| matches_pair(bond, n_idx, ca_idx))
+        );
 
         let adjacency = build_sparse_bond_adjacency(&structure, true, 0.35);
         let n_neighbors = &adjacency[n_idx];
@@ -822,10 +859,7 @@ mod tests {
                         .as_deref()
                         .or(atom.auth_asym_id.as_deref())
                         == Some(chain_id)
-                    && atom
-                        .label_seq_id
-                        .or(atom.auth_seq_id)
-                        == Some(seq_id)
+                    && atom.label_seq_id.or(atom.auth_seq_id) == Some(seq_id)
                     && atom.label_atom_id.as_deref() == Some(atom_id)
             })
             .expect("atom present in structure")

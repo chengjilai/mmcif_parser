@@ -14,4 +14,4 @@ pub use atom::{AtomPosition, AtomSite, BondType, ContactClass, ElementData};
 pub use bond::{BondAtomRef, BondEdge, BondRecord, BondRecordSource};
 pub use error::{ParseError, ParseErrorKind};
 pub use model::{InterAtomicContact, MmcifMetadata, MmcifStructure, UnitCell};
-pub use parser::{parse_async_reader, parse_file, parse_reader, parse_str, ParserOptions};
+pub use parser::{ParserOptions, parse_async_reader, parse_file, parse_reader, parse_str};

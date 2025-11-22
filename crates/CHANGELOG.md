@@ -1,4 +1,4 @@
-Changelog of mmcif_parser
+Changelog of mmcif-parser
 document every small performance progress
 
 ## Unreleased
@@ -11,7 +11,7 @@ document every small performance progress
 - `build_adjacency` now performs a lightweight degree count to reserve the exact neighbor capacity for each atom before inserting edges, eliminating repeated reallocations during dense builds.
 - The Criterion suite tracks dense adjacency construction and nearest-residue queries in addition to the existing sparse, dense-distance, and nearest-atom runs.
 - `nearest_amino_acids` now caches each atom’s residue key before distance evaluation, so repeated inserts reuse the derived identifiers instead of re-reading the labeling tags.
-- Added `python/mmcif_parser_py`, a `pyo3` + `maturin` binding crate that exposes parsing, spatial queries, and adjacency helpers as a PyPI-ready `mmcif_parser` module.
-- Added a `Makefile` in `python/mmcif_parser_py` with `make develop`, `make build`, `make clean`, and `make distclean` targets to automate maturin workflows and venv cleanup.
+- Added `python/mmcif-parser_py`, a `pyo3` + `maturin` binding crate that exposes parsing, spatial queries, and adjacency helpers as a PyPI-ready `mmcif-parser` module.
+- Added a `Makefile` in `python/mmcif-parser_py` with `make develop`, `make build`, `make clean`, and `make distclean` targets to automate maturin workflows and venv cleanup.
 - Python bindings now export unit-cell metadata, contact inspection, and per-atom property profiles with accompanying regression tests built on the `11AS.cif.gz` structure.
 - Added Biopython-backed parity tests (`test_biopython_parity.py`) to cross-check atom counts, residue metadata, and pairwise distances against the reference MMCIF parser using the bundled 11AS structure.

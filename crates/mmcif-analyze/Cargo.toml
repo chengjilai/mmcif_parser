@@ -2,19 +2,20 @@
 name = "mmcif-analyze"
 version = "0.1.0"
 edition = "2024"
+rust-version = "1.85"
 authors = ["chengjilai"]
 description = "Spatial search utilities on top of mmcif-core"
 license = "MIT"
 readme = "README.md"
-homepage = "https://github.com/chengjilai/mmcif_parser"
-repository = "https://github.com/chengjilai/mmcif_parser"
-documentation = "https://github.com/chengjilai/mmcif_parser/tree/main/crates/mmcif-analyze#readme"
+homepage = "https://github.com/chengjilai/mmcif-parser"
+repository = "https://github.com/chengjilai/mmcif-parser"
+documentation = "https://github.com/chengjilai/mmcif-parser/tree/main/crates/mmcif-analyze#readme"
 
 [dependencies]
 mmcif-core = { path = "../mmcif-core" }
 
 [dev-dependencies]
-criterion = "0.5"
+criterion.workspace = true
 
 [[bench]]
 name = "analyze"

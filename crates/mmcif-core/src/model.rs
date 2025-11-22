@@ -167,9 +167,7 @@ impl Clone for MmcifStructure {
 
 impl PartialEq for MmcifStructure {
     fn eq(&self, other: &Self) -> bool {
-        self.metadata == other.metadata
-            && self.atoms == other.atoms
-            && self.bonds == other.bonds
+        self.metadata == other.metadata && self.atoms == other.atoms && self.bonds == other.bonds
     }
 }
 
