@@ -166,14 +166,14 @@ dependencies = [
 ]
 
 [[package]]
-name = "mmcif-analyze"
+name = "mmcif_analyze"
 version = "0.1.0"
 dependencies = [
- "mmcif-core",
+ "mmcif_core",
 ]
 
 [[package]]
-name = "mmcif-core"
+name = "mmcif_core"
 version = "0.1.0"
 dependencies = [
  "flate2",
@@ -183,11 +183,11 @@ dependencies = [
 ]
 
 [[package]]
-name = "mmcif-parser-py"
+name = "mmcif_parser_py"
 version = "0.1.0"
 dependencies = [
- "mmcif-analyze",
- "mmcif-core",
+ "mmcif_analyze",
+ "mmcif_core",
  "pyo3",
  "thiserror",
 ]

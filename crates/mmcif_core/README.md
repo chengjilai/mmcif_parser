@@ -1,4 +1,4 @@
-# mmcif-core
+# mmcif_core
 
 > Refer to the [workspace README](../../README.md) for an overview of all
 > crates and tooling. This document focuses on the core parser internals.

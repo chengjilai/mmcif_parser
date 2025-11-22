@@ -1,5 +1,5 @@
 [package]
-name = "mmcif-core"
+name = "mmcif_core"
 version = "0.1.0"
 edition = "2024"
 rust-version = "1.85"
@@ -7,9 +7,9 @@ authors = ["chengjilai"]
 description = "Lightweight mmCIF reader and data structures"
 license = "MIT"
 readme = "README.md"
-homepage = "https://github.com/chengjilai/mmcif-parser"
-repository = "https://github.com/chengjilai/mmcif-parser"
-documentation = "https://github.com/chengjilai/mmcif-parser/tree/main/crates/mmcif-core#readme"
+homepage = "https://github.com/chengjilai/mmcif_parser"
+repository = "https://github.com/chengjilai/mmcif_parser"
+documentation = "https://github.com/chengjilai/mmcif_parser/tree/main/crates/mmcif_core#readme"
 
 [dependencies]
 thiserror.workspace = true

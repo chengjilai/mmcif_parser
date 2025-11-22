@@ -25,4 +25,4 @@ clean:
 # remove local venv-installed package as well
 .ONESHELL:
 distclean: clean
-	. $(VENV)/bin/activate && pip uninstall -y mmcif-parser || true
+	. $(VENV)/bin/activate && pip uninstall -y mmcif_parser || true

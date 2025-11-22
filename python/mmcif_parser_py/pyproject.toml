@@ -3,9 +3,9 @@ requires = ["maturin>=1.6,<2.0"]
 build-backend = "maturin"
 
 [project]
-name = "mmcif-parser"
+name = "mmcif_parser"
 version = "0.1.0"
-description = "Python bindings for the mmcif-parser Rust crates"
+description = "Python bindings for the mmcif_parser Rust crates"
 readme = "README.md"
 authors = [{ name = "chengjilai" }]
 license = { text = "MIT" }
@@ -20,11 +20,11 @@ classifiers = [
 dependencies = []
 
 [project.urls]
-Homepage = "https://github.com/chengjilai/mmcif-parser"
-Documentation = "https://github.com/chengjilai/mmcif-parser/tree/main/docs"
-Repository = "https://github.com/chengjilai/mmcif-parser"
-Issues = "https://github.com/chengjilai/mmcif-parser/issues"
+Homepage = "https://github.com/chengjilai/mmcif_parser"
+Documentation = "https://github.com/chengjilai/mmcif_parser/tree/main/docs"
+Repository = "https://github.com/chengjilai/mmcif_parser"
+Issues = "https://github.com/chengjilai/mmcif_parser/issues"
 
 [tool.maturin]
 bindings = "pyo3-abi3"
-module-name = "mmcif-parser"
+module-name = "mmcif_parser"

@@ -28,7 +28,7 @@ fn compare_against_biopython_reference() {
     );
 
     let stats = run_biopython_summary(crate_dir, &cif_path);
-    let structure = parse_file(&cif_path).expect("mmcif-core parses 11AS");
+    let structure = parse_file(&cif_path).expect("mmcif_core parses 11AS");
 
     assert_eq!(
         structure.atom_count(),

@@ -45,7 +45,7 @@ class BiopythonParityTests(unittest.TestCase):
     def setUpClass(cls) -> None:
         if not CIF_PATH.is_file():
             raise unittest.SkipTest(f"test data missing: {CIF_PATH}")
-        mmcif_module = import_module("mmcif-parser")
+        mmcif_module = import_module("mmcif_parser")
         cls.structure = mmcif_module.parse(CIF_PATH)  # type: ignore[attr-defined]
         if BioMMCIFParserCls is None:
             raise unittest.SkipTest("Biopython MMCIFParser unavailable")

@@ -1,22 +1,22 @@
 [package]
-name = "mmcif-parser-py"
+name = "mmcif_parser_py"
 version = "0.1.0"
 edition = "2024"
 rust-version = "1.85"
 authors = ["chengjilai"]
-description = "Python bindings for the mmcif-parser Rust crates"
+description = "Python bindings for the mmcif_parser Rust crates"
 license = "MIT"
 readme = "README.md"
-homepage = "https://github.com/chengjilai/mmcif-parser"
-repository = "https://github.com/chengjilai/mmcif-parser"
-documentation = "https://github.com/chengjilai/mmcif-parser/tree/main/python/mmcif-parser_py#readme"
+homepage = "https://github.com/chengjilai/mmcif_parser"
+repository = "https://github.com/chengjilai/mmcif_parser"
+documentation = "https://github.com/chengjilai/mmcif_parser/tree/main/python/mmcif_parser_py#readme"
 
 [lib]
-name = "mmcif-parser"
+name = "mmcif_parser"
 crate-type = ["cdylib"]
 
 [dependencies]
 pyo3 = { version = "0.21", features = ["extension-module", "abi3-py39"] }
-mmcif-core = { path = "../../crates/mmcif-core" }
-mmcif-analyze = { path = "../../crates/mmcif-analyze" }
+mmcif_core = { path = "../../crates/mmcif_core" }
+mmcif_analyze = { path = "../../crates/mmcif_analyze" }
 thiserror.workspace = true

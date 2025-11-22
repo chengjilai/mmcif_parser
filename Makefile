@@ -17,7 +17,7 @@ docs:
 docs-rust:
 	$(CARGO) doc --workspace --no-deps
 
-# The Python docs rely on `pdoc` and an importable mmcif-parser package.
+# The Python docs rely on `pdoc` and an importable mmcif_parser package.
 docs-python:
 	PYTHON_BIN=$(PYTHON) scripts/generate_docs.sh
 

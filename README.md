@@ -8,8 +8,8 @@ original documentation remains in place and is linked below for deeper dives.
 
 | Path | Purpose | Linked README |
 | --- | --- | --- |
-| `crates/mmcif-core` | Core mmCIF reader, data model, and utilities | [Module README](crates/mmcif-core/README.md) |
-| `crates/mmcif-analyze` | Spatial search, bond inference, and chemical profiling on top of `mmcif-core` | [Module README](crates/mmcif-analyze/README.md) |
+| `crates/mmcif_core` | Core mmCIF reader, data model, and utilities | [Module README](crates/mmcif_core/README.md) |
+| `crates/mmcif_analyze` | Spatial search, bond inference, and chemical profiling on top of `mmcif_core` | [Module README](crates/mmcif_analyze/README.md) |
 | `python/mmcif_parser_py` | PyO3 bindings packaged as the `mmcif_parser` wheel | [Module README](python/mmcif_parser_py/README.md) |
 | `docs/` | Documentation guide plus generated artifacts | [Docs README](docs/README.md) |
 

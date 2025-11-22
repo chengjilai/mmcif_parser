@@ -344,7 +344,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "mmcif-core"
+name = "mmcif_core"
 version = "0.1.0"
 dependencies = [
  "criterion",

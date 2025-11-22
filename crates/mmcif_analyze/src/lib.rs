@@ -1,5 +1,5 @@
 #![forbid(unsafe_code)]
-//! Spatial search helpers built on top of `mmcif-core` data structures.
+//! Spatial search helpers built on top of `mmcif_core` data structures.
 //! The API is intentionally small: feed in a `MmcifStructure`, a query point,
 //! a distance cutoff, and a hit cap to retrieve the closest atoms or amino-acid
 //! residues.

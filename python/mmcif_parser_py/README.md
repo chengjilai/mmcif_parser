@@ -1,15 +1,15 @@
-# mmcif-parser (Python bindings)
+# mmcif_parser (Python bindings)
 
 > Looking for the repo overview? Check the [top-level README](../../README.md).
 > The details below cover the PyO3 binding specifically.
 
-Python wheels generated from the `mmcif-core` and `mmcif-analyze` Rust crates. The
+Python wheels generated from the `mmcif_core` and `mmcif_analyze` Rust crates. The
 extension module exposes a high-level `Structure` type that mirrors the Rust data
 model and offers convenience helpers for spatial queries.
 
 ```python
 from pathlib import Path
-import mmcif-parser as mmcif
+import mmcif_parser as mmcif
 
 structure = mmcif.parse(Path("11AS.cif.gz"))
 print(structure.atom_count)
@@ -30,7 +30,7 @@ for hit in structure.nearest_atoms((12.0, 4.2, 0.3), max_distance=5.0, max_resul
 2. Use the provided automation targets:
 
     ```bash
-    cd python/mmcif-parser_py
+    cd python/mmcif_parser_py
     make develop   # editable install via maturin develop --release
     make build     # produce wheels + sdist via maturin build --release --sdist --strip
     ```

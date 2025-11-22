@@ -16,14 +16,14 @@ if "$PYTHON_BIN" -m pdoc --version >/dev/null 2>&1; then
     if "$PYTHON_BIN" - <<'PY' >/dev/null 2>&1; then
 import importlib.util
 import sys
-spec = importlib.util.find_spec("mmcif-parser")
+spec = importlib.util.find_spec("mmcif_parser")
 sys.exit(0 if spec is not None else 1)
 PY
         then
             echo "[docs] Generating Python API documentation via pdoc" >&2
-            "$PYTHON_BIN" -m pdoc mmcif-parser --output-dir "$PY_OUTPUT_DIR"
+            "$PYTHON_BIN" -m pdoc mmcif_parser --output-dir "$PY_OUTPUT_DIR"
         else
-            echo "[docs] mmcif-parser is not importable; skipping Python docs" >&2
+            echo "[docs] mmcif_parser is not importable; skipping Python docs" >&2
         fi
     else
         echo "[docs] Failed to probe pdoc availability; skipping Python docs" >&2

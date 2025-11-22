@@ -1,22 +1,22 @@
 [workspace]
 members = [
-    "crates/mmcif-core",
-    "crates/mmcif-analyze",
-    "python/mmcif-parser_py",
+    "crates/mmcif_core",
+    "crates/mmcif_analyze",
+    "python/mmcif_parser_py",
 ]
 resolver = "2"
 default-members = [
-    "crates/mmcif-core",
-    "crates/mmcif-analyze",
+    "crates/mmcif_core",
+    "crates/mmcif_analyze",
 ]
 
 [workspace.package]
 edition = "2024"
 authors = ["chengjilai"]
 license = "MIT"
-homepage = "https://github.com/chengjilai/mmcif-parser"
-repository = "https://github.com/chengjilai/mmcif-parser"
-documentation = "https://github.com/chengjilai/mmcif-parser/tree/main/docs"
+homepage = "https://github.com/chengjilai/mmcif_parser"
+repository = "https://github.com/chengjilai/mmcif_parser"
+documentation = "https://github.com/chengjilai/mmcif_parser/tree/main/docs"
 rust-version = "1.85"
 
 [workspace.dependencies]
