@@ -1,5 +1,8 @@
 # mmcif-core
 
+> Refer to the [workspace README](../../README.md) for an overview of all
+> crates and tooling. This document focuses on the core parser internals.
+
 Lightweight primitives to parse mmCIF/mmCIF PDBx files and expose strongly typed atom records. The code mirrors the project layout of `pdbtbx`/Biopython, but every module is implemented locally so the workspace can evolve independently and stay dependency-free.
 
 ## Implementation highlights

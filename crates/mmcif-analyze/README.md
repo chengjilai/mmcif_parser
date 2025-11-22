@@ -1,5 +1,8 @@
 # mmcif-analyze
 
+> Need the big picture? See the [top-level README](../../README.md). This file
+> drills into the analysis helpers.
+
 Spatial search helpers that sit on top of `mmcif-core`. The crate mirrors the
 API style of pdbtbx/Biopython but keeps the implementation local so the
 monorepo can stay dependency-light.

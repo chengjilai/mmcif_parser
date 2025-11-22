@@ -1,5 +1,8 @@
 # mmcif-parser (Python bindings)
 
+> Looking for the repo overview? Check the [top-level README](../../README.md).
+> The details below cover the PyO3 binding specifically.
+
 Python wheels generated from the `mmcif-core` and `mmcif-analyze` Rust crates. The
 extension module exposes a high-level `Structure` type that mirrors the Rust data
 model and offers convenience helpers for spatial queries.

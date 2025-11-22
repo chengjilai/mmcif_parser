@@ -1,5 +1,8 @@
 # Documentation Guide
 
+> For the full project overview, see the [root README](../README.md). This page
+> only covers documentation tooling.
+
 This repository ships both Rust and Python components. To keep the generated
 API references consistent, run the helper script under `scripts/`:
 
