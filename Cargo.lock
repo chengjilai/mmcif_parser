@@ -406,7 +406,7 @@ dependencies = [
 
 [[package]]
 name = "mmcif_parser_py"
-version = "0.1.0"
+version = "0.2.0"
 dependencies = [
  "mmcif_analyze",
  "mmcif_core",

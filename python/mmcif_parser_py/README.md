@@ -1,4 +1,4 @@
-# mmcif_parser (Python bindings)
+# mmcif_parser 
 
 > Looking for the repo overview? Check the [top-level README](../../README.md).
 > The details below cover the PyO3 binding specifically.
